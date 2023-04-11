@@ -22,22 +22,22 @@ for lines in rdr:
 
     
 f.close()
+print(len(datas))
+
+# f = open('reald.csv','w', newline='')
+# wr = csv.writer(f)
+# idx=0
+# for d in datas:
+#     idx+=1
+#     print(idx)
+#     url="https://api.thingiverse.com/things/"+str(int(d))+"?access_token=009771366fb227909df098e04303677c"
+#     response = requests.get(url)
+#     data=response.json()
+#     lines=[]
+#     lines.append(d)
+#     lines.append(data["name"])
+#     wr.writerow(lines)
 
 
-f = open('reald.csv','w', newline='')
-wr = csv.writer(f)
-idx=0
-for d in datas:
-    idx+=1
-    print(idx)
-    url="https://api.thingiverse.com/things/"+str(int(d))+"?access_token=009771366fb227909df098e04303677c"
-    response = requests.get(url)
-    data=response.json()
-    lines=[]
-    lines.append(d)
-    lines.append(data["name"])
-    wr.writerow(lines)
 
-
-
-f.close()
+# f.close()
