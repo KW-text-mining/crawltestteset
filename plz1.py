@@ -34,9 +34,12 @@ for d in datas[30000:60000]:
     response = requests.get(url)
     data=response.json()
     lines=[]
-    lines.append(d)
-    lines.append(data["name"])
-    wr.writerow(lines)
+    try:
+        lines.append(d)
+        lines.append(data["name"])
+        wr.writerow(lines)
+    except:
+        pass
 
 
 
