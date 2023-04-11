@@ -1,23 +1,43 @@
-
+import requests
+import json
+import time
+import csv
+import sys
 import csv
  
-datalist=[[]for i in range(10)]
-f = open('data.csv','r')
+import csv
+ 
+names={}
+datas=[]
+f = open('idx.csv','r')
 rdr = csv.reader(f)
-for line in rdr:
-    datalist[0]=line
+idx=0
+for lines in rdr:
+    idx+=1
+    
+    if idx==1:
+        continue
+
+    datas.append(lines[0])
+
+    
 f.close()
 
-# for i in range(1,10):
-#     f = open('data'+str(i)+'.csv','r')
-#     rdr = csv.reader(f)
-#     for line in rdr:
-#         datalist[i]=line
-#     f.close()
 
-cnt=0
-for i in datalist:
-    print("i: ",len(i))
-    cnt+=len(i)
+f = open('reald.csv','w', newline='')
+wr = csv.writer(f)
+idx=0
+for d in datas:
+    idx+=1
+    print(idx)
+    url="https://api.thingiverse.com/things/"+str(int(d))+"?access_token=009771366fb227909df098e04303677c"
+    response = requests.get(url)
+    data=response.json()
+    lines=[]
+    lines.append(d)
+    lines.append(data["name"])
+    wr.writerow(lines)
 
-print("total: ",cnt)
+
+
+f.close()
