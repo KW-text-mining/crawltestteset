@@ -28,13 +28,14 @@ f = open('reald1.csv','w', newline='')
 wr = csv.writer(f)
 idx=0
 for d in datas[30000:60000]:
-    idx+=1
-    print(idx)
-    url="https://api.thingiverse.com/things/"+str(int(d))+"?access_token=009771366fb227909df098e04303677c"
-    response = requests.get(url)
-    data=response.json()
-    lines=[]
     try:
+        idx+=1
+        print(idx)
+        url="https://api.thingiverse.com/things/"+str(int(d))+"?access_token=009771366fb227909df098e04303677c"
+        response = requests.get(url)
+        data=response.json()
+        lines=[]
+    
         lines.append(d)
         lines.append(data["name"])
         wr.writerow(lines)
