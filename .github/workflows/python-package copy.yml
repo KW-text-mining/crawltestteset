@@ -27,7 +27,7 @@ jobs:
         pip install webdriver_manager
     - name: Build package
       run: |
-        python "plz1.py"
+        python "plz.py"
     - name: Commits
       run: |
         git pull origin main
